@@ -43,7 +43,10 @@ Roman::Roman()
 {
     value = 0;
 }
-
+/**
+ * Constructor with one argument
+ * @param str
+ */
 Roman::Roman(const string &str)
 {
     convertFromRoman(str);
@@ -56,7 +59,42 @@ void Roman::convertFromRoman(const string &roman)
     cout << "Roman number " << roman << endl;
     // Do logic to transform a roman numeral to a decimal number
     // LXVI = 66;
-    value = 66;
+    char temp;
+    int sum = 0;
+    for (int i = 0; i < roman.length(); i++)
+    {
+        temp = roman.at(i);
+        if (temp == 'M')
+        {
+            sum += 1000;
+        }
+        else if (temp == 'D')
+        {
+            sum += 500;
+        }
+        else if (temp == 'C')
+        {
+            sum += 100;
+        }
+        else if (temp == 'L')
+        {
+            sum += 50;
+        }
+        else if (temp == 'X')
+        {
+            sum += 10;
+        }
+        else if (temp == 'V')
+        {
+            sum += 5;
+        }
+        else if (temp == 'I')
+        {
+            sum += 1;
+        }
+
+    }
+    value = sum;
 }
 /**
  * Convert an int value into a Roman numeral string
