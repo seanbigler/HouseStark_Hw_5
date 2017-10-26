@@ -102,6 +102,8 @@ void Roman::convertFromRoman(const string &roman)
  */
 string Roman::convertToRoman() const
 {
+    string temp;
+
     return std::string();
 }
 
