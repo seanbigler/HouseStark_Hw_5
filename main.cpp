@@ -1,9 +1,11 @@
 #include <iostream>
+#include"Roman.h"
+
 using namespace std;
 
 int main()
 {
-    //testConstructor();
+    testConstructor();
     //testOperatorPlus();
     //testOperatorPlusEqual();
     //testOperatorIncrement();

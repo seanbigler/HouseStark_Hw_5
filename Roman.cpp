@@ -3,26 +3,57 @@
 //
 
 #include "Roman.h"
-using namespace std;
 /**
- * Default constructor. Set value to 0
+ * Default Constructor
  */
-Roman::Roman(): value(0) {}
-/**
- * Constructor with one value. Calls method to convert to Roman
- */
-Roman::Roman(const string&)
+Roman::Roman()
 {
-
-    convertFromRoman(const string&);
+    value = 0;
 }
 
-string Roman::convertToRoman() const
+//This helps with testing, do not modify.
+void testConstructor()
 {
-    return string();
+    //Test to make sure that empty objects are set to zero.
+    Roman blank;
+    checkTest("testConstructor #1", 0, blank);
+
+    //Test reading in a number.
+    //Roman a("LXVI");
+    //checkTest("testConstructor #2", 66, a);
+
+    //Test a bigger number.
+    //Roman b("MMMDDCCLLXXVVII");
+    //checkTest("testConstructor #3", 4332, b);
+
 }
 
-void Roman::convertFromRoman(const string &)
+//This helps with testing, do not modify.
+bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
 {
+    if (whatItShouldBe == obj.value)
+    {
+        cout << "Passed " << testName << endl;
+        return true;
+    }
+    else
+    {
+        cout << "****** Failed test " << testName << " ****** " << endl << "     Object contained: "<< obj.value << endl << "     Output should have contained: " << whatItShouldBe << endl;
+        return false;
+    }
+}
 
+//This helps with testing, do not modify.
+bool checkTest(string testName, string whatItShouldBe, string whatItIs )
+{
+    if (whatItShouldBe == whatItIs)
+    {
+        cout << "Passed " << testName << endl;
+        return true;
+    }
+    else
+    {
+        cout << "****** Failed test " << testName << " ****** " << endl << "     Object contained: "<< whatItIs << endl << "     Output should have contained: " << whatItShouldBe << endl;
+        return false;
+    }
 }
