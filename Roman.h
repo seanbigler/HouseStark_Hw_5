@@ -6,7 +6,8 @@
 #define HOUSESTARK_HW_5_ROMAN_H
 
 
-class Roman {
+class Roman
+{
 
 };
 
