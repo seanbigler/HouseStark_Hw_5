@@ -1,8 +1,22 @@
 //
 // Created by w01164264 on 10/26/2017.
 //
-
+#include<iostream>
 #include "Roman.h"
+
+/**
+ * Default Constructor
+ */
+Roman::Roman(): value(0) {}
+
+/**
+ * Constructor with one argument
+ * @param str
+ */
+Roman::Roman(const string &empire)
+{
+    convertFromRoman(empire);
+}
 
 //This helps with testing, do not modify.
 void testConstructor()
@@ -21,6 +35,153 @@ void testConstructor()
 
 }
 
+/**
+ * Convert Roman numeral string into an int value
+ */
+void Roman::convertFromRoman(const string &empire)
+{
+    for(int i = 0; i < empire.length(); i++)
+    {
+        for(int j = 0; j < MAX; j++)
+        {
+            if(empire.at(i) == roman[j])
+            {
+                value += change[j];
+            }
+        }
+    }
+}
+
+/**
+ * Convert an int value into a Roman numeral string
+ * @return : Roman numeral string
+ */
+/*
+string Roman::convertToRoman(int value) const
+{
+    for(int i = 0; i < MAX; i++)
+    {
+        if (value > change[i])
+        {
+            value -= change[i];
+            gladiator[i] += roman[i];
+            i = 0;
+        }
+    }
+    return string(gladiator);
+}
+
+void testOutput()
+{
+    Roman a("MDCLXVI");
+    string b = a.convertToRoman(a.value);
+    checkTest("testOutput #1", "MDCLXVI", b);
+
+    //This is really the value 7.  Your code should correctly read this in and convert it back to VII.
+    Roman c("IIIIIII");
+    b = c.convertToRoman(c.value);
+    checkTest("testOutput #2", "VII", b);
+
+}*/
+
+/*
+void testOperatorPlus()
+{
+    //Test adding two roman objects
+    Roman a("XVI");
+    Roman b("MDCLXVI");
+    Roman c = a + b;
+    checkTest("testOperatorPlus #1", 1682, c);
+    //make sure the left and right operands weren't modified
+    checkTest("testOperatorPlus #2", 16, a);
+    checkTest("testOperatorPlus #3", 1666, b);
+
+    //Test adding an object with an int
+    c = a + 52;
+    checkTest("testOperatorPlus #4", 68, c);
+    //make sure the left operand wasn't modified
+    checkTest("testOperatorPlus #5", 16, a);
+
+    //Test adding an int with an object
+    c = 578 + a;
+    checkTest("testOperatorPlus #6", 594, c);
+    //make sure the right operand wasn't modified
+    checkTest("testOperatorPlus #7", 16, a);
+
+}
+void Roman::operator+=(const Roman &empire)
+{
+
+}
+void testOperatorPlusEqual()
+{
+    //Test adding two roman objects
+    Roman a("MLII");
+    Roman b("DDCCI");
+    a += b;
+    checkTest("testOperatorPlusEqual #1", 2253, a);
+    //make sure the right operand wasn't modified
+    checkTest("testOperatorPlusEqual #2", 1201, b);
+
+    //Test adding on an integer
+    b += 17;
+    checkTest("testOperatorPlusEqual #3", 1218, b);
+}*/
+
+Roman Roman::operator++()
+{
+    value++;
+    return Roman(*this);
+}
+
+void testOperatorIncrement()
+{
+    //Test prefix increment
+    Roman a("MLII");
+    Roman b("DDCCI");
+    b = ++a;
+    checkTest("testOperatorIncrement #1", 1053, a);
+    checkTest("testOperatorIncrement #2", 1053, b);
+}
+
+/*!
+ * Sets the output
+ * @param output :
+ * @param a :
+ * @return : Returns correct output
+ */
+ostream &operator<<(ostream &output, const Roman &empire)
+{
+    output << empire.value;
+    return output;
+}
+
+/*!
+ *
+ * @param input :
+ * @param empire :
+ * @return : Return where input will be put
+ */
+istream &operator>>(istream &input, Roman &empire)
+{
+    input >> empire.gladiator;
+    empire.convertFromRoman(empire.gladiator);
+    return input;
+}
+
+void testConsoleIO()
+{
+    //Test reading in the data using the extraction operator >>
+    cout << "Enter the text CCLX: ";
+    Roman a;
+    cin >> a;
+    checkTest("testConsoleIO #1", 260, a);
+
+    //Test outputting data using the insertion operator <<
+    cout << "testConsoleIO #2" << endl << "If this says 260, this test passed: " << a << endl;
+
+}
+
 //This helps with testing, do not modify.
 bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
 {
@@ -36,97 +197,6 @@ bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
     }
 }
 
-/**
- * Default Constructor
- */
-Roman::Roman()
-{
-    value = 0;
-}
-/**
- * Constructor with one argument
- * @param str
- */
-Roman::Roman(const string &str)
-{
-    convertFromRoman(str);
-}
-/**
- * Convert Roman numeral string into an int value
- */
-void Roman::convertFromRoman(const string &roman)
-{
-    //TAKE A LOOK AT THIS, ITS A SHORTER LOOP FOR CONVERSION.
-
-    /*for(int i = 0; i < roman.length(); i++)
-    {
-        for(int j = 0; j < MAX; j++)
-        {
-            if(roman[i] == roman[j])
-            {
-                value += change[j];
-            }
-        }
-    }*/
-
-    cout << "Roman number " << roman << endl;
-    // Do logic to transform a roman numeral to a decimal number
-    // LXVI = 66;
-    char temp;
-    int sum = 0;
-    for (int i = 0; i < roman.length(); i++)
-    {
-        temp = roman.at(i);
-        if (temp == 'M')
-        {
-            sum += 1000;
-        }
-        else if (temp == 'D')
-        {
-            sum += 500;
-        }
-        else if (temp == 'C')
-        {
-            sum += 100;
-        }
-        else if (temp == 'L')
-        {
-            sum += 50;
-        }
-        else if (temp == 'X')
-        {
-            sum += 10;
-        }
-        else if (temp == 'V')
-        {
-            sum += 5;
-        }
-        else if (temp == 'I')
-        {
-            sum += 1;
-        }
-
-    }
-    value = sum;
-}
-
-/**
- * Convert an int value into a Roman numeral string
- * @return : Roman numeral string
- */
-string Roman::convertToRoman(int value) const
-{
-    for(int i = 0; i < MAX; i++)
-    {
-        if (value > change[i])
-        {
-            value -= change[i];
-            gladiator += roman[i];
-            i = 0;
-        }
-    }
-    return string(gladiator);
-}
 
 //This helps with testing, do not modify.
 bool checkTest(string testName, string whatItShouldBe, string whatItIs )
@@ -142,3 +212,7 @@ bool checkTest(string testName, string whatItShouldBe, string whatItIs )
         return false;
     }
 }
+
+
+
+

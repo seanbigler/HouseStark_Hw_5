@@ -8,8 +8,8 @@ int main()
     testConstructor();
     //testOperatorPlus();
     //testOperatorPlusEqual();
-    //testOperatorIncrement();
+    testOperatorIncrement();
     //testOutput();
-    //testConsoleIO();
+    testConsoleIO();
     return 0;
 }
