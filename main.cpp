@@ -9,7 +9,7 @@ int main()
     //testOperatorPlus();
     //testOperatorPlusEqual();
     testOperatorIncrement();
-    //testOutput();
+    testOutput();
     testConsoleIO();
     return 0;
 }

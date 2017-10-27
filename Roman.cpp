@@ -56,19 +56,19 @@ void Roman::convertFromRoman(const string &empire)
  * Convert an int value into a Roman numeral string
  * @return : Roman numeral string
  */
-/*
+
 string Roman::convertToRoman(int value) const
 {
     for(int i = 0; i < MAX; i++)
     {
-        if (value > change[i])
+        if (value >= change[i])
         {
             value -= change[i];
-            gladiator[i] += roman[i];
+            *death += roman[i];
             i = 0;
         }
     }
-    return string(gladiator);
+    return string(*death);
 }
 
 void testOutput()
@@ -82,7 +82,7 @@ void testOutput()
     b = c.convertToRoman(c.value);
     checkTest("testOutput #2", "VII", b);
 
-}*/
+}
 
 /*
 void testOperatorPlus()

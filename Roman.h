@@ -31,6 +31,7 @@ private:
     string convertToRoman(int value) const;  //The method that helps us take an integer and turn it into a roman numeral
     void convertFromRoman(const string &empire);  //The method that helps us take an roman numeral in a string and convert it into the integer
     string gladiator;
+    string *death = &gladiator;
 public:
     Roman();    // Default constructor
     Roman(const string &empire);  //The constructor which accepts a string and  converts it internally to an integer.  It actually just forwards it onto convertFromRoman()
