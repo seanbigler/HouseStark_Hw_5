@@ -122,7 +122,6 @@ string Roman::convertToRoman(int value) const
         {
             value -= change[i];
             gladiator += roman[i];
-            cout << "Check" << endl;
             i = 0;
         }
     }
