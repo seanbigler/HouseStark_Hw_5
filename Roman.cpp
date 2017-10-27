@@ -56,6 +56,19 @@ Roman::Roman(const string &str)
  */
 void Roman::convertFromRoman(const string &roman)
 {
+    //TAKE A LOOK AT THIS, ITS A SHORTER LOOP FOR CONVERSION.
+
+    /*for(int i = 0; i < roman.length(); i++)
+    {
+        for(int j = 0; j < MAX; j++)
+        {
+            if(roman[i] == roman[j])
+            {
+                value += change[j];
+            }
+        }
+    }*/
+
     cout << "Roman number " << roman << endl;
     // Do logic to transform a roman numeral to a decimal number
     // LXVI = 66;
@@ -96,15 +109,24 @@ void Roman::convertFromRoman(const string &roman)
     }
     value = sum;
 }
+
 /**
  * Convert an int value into a Roman numeral string
  * @return : Roman numeral string
  */
-string Roman::convertToRoman() const
+string Roman::convertToRoman(int value) const
 {
-    string temp;
-
-    return std::string();
+    for(int i = 0; i < MAX; i++)
+    {
+        if (value > change[i])
+        {
+            value -= change[i];
+            gladiator += roman[i];
+            cout << "Check" << endl;
+            i = 0;
+        }
+    }
+    return string(gladiator);
 }
 
 //This helps with testing, do not modify.
