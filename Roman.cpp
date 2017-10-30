@@ -83,12 +83,28 @@ void testOutput()
     checkTest("testOutput #2", "VII", b);
 
 }
-
+/**
+ * Overloaded + to add Roman objects
+ * @param secundus: the Roman object being added to the first
+ * @return : Roman object with value = values of a and b combined
+ */
 Roman Roman::operator+(const Roman &secundus) const
 {
     unsigned int total;
     Roman result;
     total = value + secundus.value;
+    result.value = total;
+    return result;
+}
+/**
+ * Overloaded + to add an int to a Roman object
+ * @return Roman object with value = value of a plus the int
+ */
+Roman Roman::operator+(const int num) const
+{
+    unsigned int total;
+    Roman result;
+    total = value + num;
     result.value = total;
     return result;
 }
@@ -103,13 +119,13 @@ void testOperatorPlus()
     //make sure the left and right operands weren't modified
     checkTest("testOperatorPlus #2", 16, a);
     checkTest("testOperatorPlus #3", 1666, b);
-/*
+
     //Test adding an object with an int
     c = a + 52;
     checkTest("testOperatorPlus #4", 68, c);
     //make sure the left operand wasn't modified
     checkTest("testOperatorPlus #5", 16, a);
-
+/*
     //Test adding an int with an object
     c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);

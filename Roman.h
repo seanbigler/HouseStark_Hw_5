@@ -38,6 +38,7 @@ public:
     Roman(const string &empire);  //The constructor which accepts a string and  converts it internally to an integer.  It actually just forwards it onto convertFromRoman()
     Roman operator++();  //The prefix ++ operator
     Roman operator+(const Roman&) const;  //The left and right operands are Roman objects
+    Roman operator+(const int) const; //The left operand is a Roman object, the right is an int number.
 
     void operator +=(const Roman &empire);  //The left and right operands are Roman objects, but the left operand can change.
     void operator +=(const int);  //The left operand is a Roman object, the right is an int number.  The left operand can change.
