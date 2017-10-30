@@ -84,7 +84,15 @@ void testOutput()
 
 }
 
-/*
+Roman Roman::operator+(const Roman &secundus) const
+{
+    unsigned int total;
+    Roman result;
+    total = value + secundus.value;
+    result.value = total;
+    return result;
+}
+
 void testOperatorPlus()
 {
     //Test adding two roman objects
@@ -95,7 +103,7 @@ void testOperatorPlus()
     //make sure the left and right operands weren't modified
     checkTest("testOperatorPlus #2", 16, a);
     checkTest("testOperatorPlus #3", 1666, b);
-
+/*
     //Test adding an object with an int
     c = a + 52;
     checkTest("testOperatorPlus #4", 68, c);
@@ -107,8 +115,9 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #6", 594, c);
     //make sure the right operand wasn't modified
     checkTest("testOperatorPlus #7", 16, a);
-
+*/
 }
+ /*
 void Roman::operator+=(const Roman &empire)
 {
 
