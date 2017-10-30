@@ -147,11 +147,12 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #7", 16, a);
 
 }
- /*
+
 void Roman::operator+=(const Roman &empire)
 {
-
+    value += empire.value;
 }
+
 void testOperatorPlusEqual()
 {
     //Test adding two roman objects
@@ -161,11 +162,12 @@ void testOperatorPlusEqual()
     checkTest("testOperatorPlusEqual #1", 2253, a);
     //make sure the right operand wasn't modified
     checkTest("testOperatorPlusEqual #2", 1201, b);
-
+/*
     //Test adding on an integer
     b += 17;
     checkTest("testOperatorPlusEqual #3", 1218, b);
-}*/
+*/
+}
 
 Roman Roman::operator++()
 {

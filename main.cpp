@@ -7,7 +7,7 @@ int main()
 {
     testConstructor();
     testOperatorPlus();
-    //testOperatorPlusEqual();
+    testOperatorPlusEqual();
     testOperatorIncrement();
     testOutput();
     testConsoleIO();
