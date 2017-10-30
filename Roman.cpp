@@ -147,12 +147,18 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #7", 16, a);
 
 }
-
+/**
+ * Overloaded += to add value of one Roman object to value of another
+ * @param empire: Roman object being added to the first
+ */
 void Roman::operator+=(const Roman &empire)
 {
     value += empire.value;
 }
-
+/**
+ * Overloaded += to add int value to value of a Roman object
+ * @param num : int value being added
+ */
 void Roman::operator +=(const int num)
 {
     value += num;
