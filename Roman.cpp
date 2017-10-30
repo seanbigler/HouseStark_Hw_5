@@ -108,6 +108,20 @@ Roman Roman::operator+(const int num) const
     result.value = total;
     return result;
 }
+/**
+ * Overloaded + to add a Roman object to an int
+ * @param num int to be added to
+ * @param secundus Roman object that is added
+ * @return Roman object with value = int plus value of a
+ */
+Roman operator+(const int num, const Roman &secundus)
+{
+    unsigned int total;
+    Roman result;
+    total = num + secundus.value;
+    result.value = total;
+    return result;
+}
 
 void testOperatorPlus()
 {
@@ -125,13 +139,13 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #4", 68, c);
     //make sure the left operand wasn't modified
     checkTest("testOperatorPlus #5", 16, a);
-/*
+
     //Test adding an int with an object
     c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);
     //make sure the right operand wasn't modified
     checkTest("testOperatorPlus #7", 16, a);
-*/
+
 }
  /*
 void Roman::operator+=(const Roman &empire)
