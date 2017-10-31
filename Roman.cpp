@@ -179,7 +179,10 @@ void testOperatorPlusEqual()
     checkTest("testOperatorPlusEqual #3", 1218, b);
 
 }
-
+/*!
+ * Increment the value as a prefix
+ * @return return the value
+ */
 Roman Roman::operator++()
 {
     value++;
@@ -198,8 +201,8 @@ void testOperatorIncrement()
 
 /*!
  * Sets the output
- * @param output :
- * @param a :
+ * @param output : what will be output
+ * @param empire : the value being output
  * @return : Returns correct output
  */
 ostream &operator<<(ostream &output, const Roman &empire)
@@ -210,8 +213,8 @@ ostream &operator<<(ostream &output, const Roman &empire)
 
 /*!
  *
- * @param input :
- * @param empire :
+ * @param input : where the value is stored
+ * @param empire : what value is being stored
  * @return : Return where input will be put
  */
 istream &operator>>(istream &input, Roman &empire)
